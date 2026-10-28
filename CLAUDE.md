@@ -35,10 +35,10 @@ python -m venv .venv
 .venv\Scripts\python -m sincronizacao --fonte <repo bdesk> --versao-produto 8.0.3 --saida-dev <pasta>
 
 # Strict build (same as CI; fails on warnings)
-mkdocs build --strict
+.venv\Scripts\python -m mkdocs build --strict
 
 # Local server with live reload
-mkdocs serve
+.venv\Scripts\python -m mkdocs serve
 
 # Leak check
 .venv\Scripts\python -m sincronizacao.vazamento docs
@@ -93,6 +93,13 @@ Do not write customer names, routine names, or code file names in any tracked fi
 
 - Source: `<repo bdesk>/Database/docs`, published only from commits on `origin/development`, and only when the source's quality gate (régua) verdict is `APROVADA`.
 - Source changes are made on branch `8005-database-melhorias-correcoes` and integrated afterwards.
+- `--fonte` must point to a clean checkout whose HEAD is contained in `origin/development` (the gate checks it); the main product checkout may be on an unrelated branch. Use remote `origin`; the `bitbucket` remote is stale.
+- The régua report must be committed in the same commit as the last `Database/docs` change: its `commit` field points to the parent, so freshness is checked by file history.
+- Source authoring rules (proof convention, `--rehash` after rewriting a rule) are in `<repo bdesk>/Database/docs/_manutencao/como-atualizar.md`. The source verifier and régua `--so` globs are relative to the repo root (`Database/docs/fatos/*.md`); a wrong glob silently selects nothing.
+
+## Public History
+
+- `main` on GitHub starts from a single clean commit. The local branch `historico-local` holds the development history and must never be pushed (an old commit there fails the full leak check).
 
 ## CI
 
@@ -143,3 +150,9 @@ tests/                            # pytest suite
 - `mkdocs.yml` and the mirrored/generated pages are overwritten by synchronization. Editing them by hand is lost work.
 - `mkdocs build --strict` fails on warnings. The site only builds against a real synchronized `docs/`; the tests use a minimal project.
 - In generic mode the leak check reports only `path:line category`, never the matched text. Use `--completo` locally to see private matches.
+- `vazamento docs` before the first synchronization flags every table and column: the allowlist comes from `sincronizacao/esquema-publicado.json`, which the sync writes.
+- Excluded credential columns must not be named anywhere on the site, not even in prose saying they are excluded. Fix wording at the source or with an entry in `privado/ajustes.json` (avoids reopening the source approval).
+- The full check (hook) blocks the source's internal technology names even in README/CLAUDE quotes; describe the category instead of naming it.
+- Published decisions: the content of the source's decision marker (an HTML comment named `decisao`) becomes "decisão do produto". Keep parentheses outside the marker so it reads "(decisão do produto)".
+- Git converts line endings on this machine; `.gitattributes` forces LF because tests compare exact text.
+- Spec, plans and the execution progress file live in `planejamento/` (gitignored, local only).
