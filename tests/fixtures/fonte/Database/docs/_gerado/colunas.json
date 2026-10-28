@@ -1,0 +1,16 @@
+{
+  "dbo.TabelaA": [
+    {"nome": "id", "tipo": "int", "nulo": false, "pk": true, "computada": false},
+    {"nome": "colData", "tipo": "datetime", "nulo": true, "pk": false, "computada": false}
+  ],
+  "dbo.TabelaAConcluida": [
+    {"nome": "id", "tipo": "int", "nulo": false, "pk": true, "computada": false},
+    {"nome": "colTotal", "tipo": "int", "nulo": false, "pk": false, "computada": true}
+  ],
+  "dbo.SenhaFicticia": [
+    {"nome": "id", "tipo": "int", "nulo": false, "pk": true, "computada": false}
+  ],
+  "dbo.TabelaTemp": [
+    {"nome": "id", "tipo": "int", "nulo": false, "pk": true, "computada": false}
+  ]
+}

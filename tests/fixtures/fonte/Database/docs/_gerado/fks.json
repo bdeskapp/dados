@@ -1,0 +1,5 @@
+[
+  {"nome": "FK_TabelaAConcluida_TabelaA",
+   "de": {"tabela": "dbo.TabelaAConcluida", "colunas": ["id"]},
+   "para": {"tabela": "dbo.TabelaA", "colunas": ["id"]}}
+]

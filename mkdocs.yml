@@ -1,0 +1,141 @@
+site_name: "Bdesk: Dados"
+site_url: https://bdeskapp.github.io/dados
+site_description: Documentação do banco de dados do Bdesk para engenheiros de dados
+
+theme:
+  name: material
+  language: pt-BR
+  custom_dir: overrides
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Modo escuro
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Modo claro
+  features:
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.tabs.link
+
+validation:
+  links:
+    not_found: warn
+    anchors: warn
+    absolute_links: warn
+    unrecognized_links: warn
+
+nav:
+  - Início: index.md
+  - "Comece aqui":
+    - "O modelo em 5 minutos": comece-aqui/modelo-em-5-minutos.md
+    - "Regras de ouro": comece-aqui/regras-de-ouro.md
+  - "Consumo":
+    - "Carga incremental": consumo/carga-incremental.md
+    - "Calendário e tempos": consumo/calendario-e-tempos.md
+    - "Acesso e leitura": consumo/acesso-e-leitura.md
+    - "Traduzindo as receitas": consumo/traduzindo-as-receitas.md
+  - "Modelo":
+    - "Regras essenciais": mapa/regras-essenciais.md
+    - "Abertas e encerradas": mapa/abertas-e-encerradas.md
+    - "Matriz fato × dimensão": mapa/matriz-fato-dimensao.md
+    - "Modelo: a requisição no centro": mapa/modelo.md
+    - "Papéis e participação": mapa/papeis-e-participacao.md
+    - "Regras essenciais das dimensões": mapa/regras-essenciais-dimensoes.md
+  - "Fatos":
+    - "apontamento de horas e despesas": fatos/apontamento-e-despesas.md
+    - "avaliação e satisfação": fatos/avaliacao-satisfacao.md
+    - "dados adicionais": fatos/dados-adicionais.md
+    - "eventos do histórico": fatos/eventos-historico.md
+    - "marcos da requisição": fatos/marcos.md
+    - "participação": fatos/participacao.md
+    - "requisição": fatos/requisicao.md
+    - "tempo de atendimento por grupo": fatos/tempo-por-grupo.md
+    - "tempo por status": fatos/tempo-por-status.md
+    - "tempo da requisição": fatos/tempo-requisicao.md
+    - "vínculos entre requisições": fatos/vinculos.md
+  - "Dimensões":
+    - "ação": dimensoes/acao.md
+    - "canal e origem": dimensoes/canal-origem.md
+    - "classificação (categoria, subcategoria, atividade, formulário e item de cardápio)": dimensoes/classificacao.md
+    - "grupo e área": dimensoes/grupo-area.md
+    - "pessoa e organização": dimensoes/pessoa-organizacao.md
+    - "prioridade e SLA": dimensoes/prioridade-sla.md
+    - "status": dimensoes/status-fase.md
+    - "calendário de atendimento": dimensoes/tempo-calendario.md
+  - "Receitas":
+    - "requisições atrasadas agora": receitas/atrasadas-agora.md
+    - "avaliações por grupo": receitas/avaliacoes-por-grupo.md
+    - "distribuição de um campo de lista": receitas/distribuicao-campo-lista.md
+    - "filhas de um pai": receitas/filhas-de-um-pai.md
+    - "fora do SLA por prioridade": receitas/fora-do-sla-por-prioridade.md
+    - "formulários que usam um campo": receitas/formularios-que-usam-campo.md
+    - "mudanças de grupo": receitas/mudancas-de-grupo.md
+    - "participantes vigentes de uma requisição": receitas/participantes-vigentes.md
+    - "vários campos como colunas, uma linha por requisição": receitas/pivo-de-campos.md
+    - "quem encerrou a requisição": receitas/quem-encerrou.md
+    - "rejeições de conclusão": receitas/rejeicoes-de-conclusao.md
+    - "requisições de um solicitante": receitas/requisicoes-de-um-solicitante.md
+    - "requisições do grupo atual": receitas/requisicoes-do-grupo-atual.md
+    - "percentual dentro do SLA por grupo": receitas/sla-por-grupo.md
+    - "solicitante e responsável das requisições de um grupo": receitas/solicitante-e-responsavel.md
+    - "taxa de rejeição de conclusão por grupo": receitas/taxa-de-rejeicao-por-grupo.md
+    - "tempo da abertura ao encerramento por categoria": receitas/tempo-abertura-ate-encerramento-por-categoria.md
+    - "tempo até a primeira resposta": receitas/tempo-ate-primeira-resposta.md
+    - "tempo de atendimento por grupo": receitas/tempo-atendimento-por-grupo.md
+    - "tempo em cada status": receitas/tempo-em-cada-status.md
+    - "tempo total por requisição": receitas/tempo-total-por-requisicao.md
+    - "último atendente das requisições abertas": receitas/ultimo-atendente-das-abertas.md
+    - "valores de um campo nas requisições": receitas/valores-de-um-campo.md
+    - "volume de requisições por canal de abertura": receitas/volume-por-canal.md
+    - "volume de requisições por categoria, subcategoria e atividade": receitas/volume-por-classificacao.md
+    - "volume de requisições por mês": receitas/volume-por-mes.md
+  - "Views":
+    - "Views recomendadas": views/views-recomendadas.md
+  - "Referência":
+    - "Dicionário de dados": dicionario/index.md
+    - "Domínios do produto": dominios-do-produto.md
+    - "Glossário": glossario-tela-banco.md
+    - "Busca": busca.md
+    - "Limitações conhecidas": limitacoes-conhecidas.md
+    - "base de conhecimento": fora-de-escopo/base-de-conhecimento.md
+    - "chatbot (assistente virtual)": fora-de-escopo/chatbot.md
+    - "CMDB (itens de configuração e patrimônio)": fora-de-escopo/cmdb.md
+    - "CRM (contratos e faturamento)": fora-de-escopo/crm.md
+    - "e-mail": fora-de-escopo/email.md
+    - "motor de relatórios": fora-de-escopo/motor-de-relatorios.md
+    - "push e notificações": fora-de-escopo/push.md
+    - "workflow (processo e fluxo)": fora-de-escopo/workflow.md
+    - "Versão da documentação": sobre/versao.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.highlight:
+      anchor_linenums: true
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - tables
+  - attr_list
+  - md_in_html
+
+plugins:
+  - search:
+      lang: pt

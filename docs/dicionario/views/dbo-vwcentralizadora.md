@@ -1,0 +1,24 @@
+---
+gerado: sincronizacao
+---
+
+# dbo.vwCentralizadora
+
+**Selo:** Só estrutura
+
+!!! warning "Só estrutura"
+    O significado das colunas desta tabela não está documentado. Não deduza o significado pelo nome da coluna.
+
+## Colunas
+
+| Coluna | Tipo |
+|---|---|
+| `idFlu` | int |
+| `dsSta` | varchar |
+| `dsReq` | varchar |
+| `nmREG` | varchar |
+| `nmANTE` | varchar |
+| `dsHie` | varchar |
+
+!!! note "Tipos sem tamanho"
+    Os tipos são mostrados sem tamanho nem precisão (por exemplo, varchar sem o comprimento).

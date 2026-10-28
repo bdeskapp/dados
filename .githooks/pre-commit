@@ -1,0 +1,52 @@
+#!/bin/sh
+# Bloqueia o commit se o que está no index (staged) tiver referência a código interno.
+# Ativação: git config core.hooksPath .githooks
+raiz=$(git rev-parse --show-toplevel) || exit 1
+cd "$raiz" || exit 1
+
+if [ -x .venv/Scripts/python ]; then
+  py=.venv/Scripts/python
+elif [ -x .venv/bin/python ]; then
+  py=.venv/bin/python
+elif command -v python >/dev/null 2>&1; then
+  py=python
+else
+  py=python3
+fi
+
+tmp=$(mktemp -d) || exit 1
+trap 'rm -rf "$tmp"' EXIT
+mkdir -p "$tmp/idx" "$tmp/raiz" || exit 1
+
+# Verifica o conteúdo do index, não a árvore de trabalho.
+git ls-files -z -- docs | git checkout-index -z --stdin --prefix="$tmp/idx/" || exit 1
+for f in README.md CLAUDE.md; do
+  if git cat-file -e ":$f" 2>/dev/null; then
+    git show ":$f" > "$tmp/raiz/$f" || exit 1
+  fi
+done
+
+if [ -d sincronizacao/privado ]; then
+  modo="--completo"
+else
+  modo=""
+  echo "AVISO: verificação completa indisponível" >&2
+fi
+
+# docs/ vai para o site (lista de permissões); README.md e CLAUDE.md não vão (--repositorio).
+for pasta in "$tmp/idx/docs" "$tmp/raiz"; do
+  if [ "$pasta" = "$tmp/raiz" ]; then
+    escopo="--repositorio"
+  else
+    escopo=""
+  fi
+  # shellcheck disable=SC2086
+  "$py" -m sincronizacao.vazamento $escopo $modo "$pasta"
+  rc=$?
+  if [ "$rc" -eq 2 ]; then
+    echo "AVISO: verificação completa incompleta ou pasta ausente" >&2
+    exit 1
+  fi
+  [ "$rc" -eq 0 ] || exit 1
+done
+exit 0

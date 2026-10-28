@@ -1,0 +1,7 @@
+site/
+.venv/
+sincronizacao/privado/
+planejamento/
+.sync-tmp/
+__pycache__/
+.sync-backup-*/

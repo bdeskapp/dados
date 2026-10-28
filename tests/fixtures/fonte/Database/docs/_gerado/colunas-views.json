@@ -1,0 +1,4 @@
+{
+  "vwExemplo": [{"nome": "id", "tipo": "int"}, {"nome": "colData", "tipo": "datetime"}],
+  "vwOutra": [{"nome": "id", "tipo": "int"}]
+}

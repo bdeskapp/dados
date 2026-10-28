@@ -1,0 +1,11 @@
+{
+  "veredito": "APROVADA",
+  "receitas": [
+    {"id": "receita-ok", "estado": "aprovada"},
+    {"id": "receita-disputa", "estado": "em-disputa"}
+  ],
+  "itens": [
+    {"id": "R-fato-a-01", "estado": "vigente"},
+    {"id": "R-fato-a-02", "estado": "em-disputa"}
+  ]
+}
