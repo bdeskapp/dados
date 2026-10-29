@@ -5,3 +5,4 @@ planejamento/
 .sync-tmp/
 __pycache__/
 .sync-backup-*/
+urls.txt
